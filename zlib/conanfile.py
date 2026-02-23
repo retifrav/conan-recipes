@@ -25,6 +25,13 @@ class zlibConan(ConanFile):
     user = "decovar"
     channel = "public"
 
+    options = {
+        "shared": [True, False]
+    }
+    default_options = {
+        "shared": False
+    }
+
     settings = "os", "compiler", "build_type", "arch"
 
     def export_sources(self):
