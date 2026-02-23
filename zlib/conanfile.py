@@ -17,12 +17,12 @@ class zlibConan(ConanFile):
     name = "zlib"
     version = "1.3.1"
 
-    license = "http://zlib.net/zlib_license.html"
     author = name
     url = "https://github.com/madler/zlib"
     description = "A massively spiffy yet delicately unobtrusive compression library"
+    license = "Zlib"
 
-    user = "some"
+    user = "decovar"
     channel = "public"
 
     settings = "os", "compiler", "build_type", "arch"
