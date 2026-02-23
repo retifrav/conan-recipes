@@ -28,20 +28,12 @@ class zlibConan(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
 
     def export_sources(self):
-        # the paths in `conandata.yml` might need to be adjusted, but anyway, don't use that,
-        # as exporting patches is supposed to be done with `export_conandata_patches()`
-        #copy(
-        #    self,
-        #    "*.patch",
-        #    src=f"{self.recipe_folder}/../patches/{self.version}",
-        #    dst=f"{self.export_sources_folder}/patches"
-        #)
         export_conandata_patches(self)
 
         copy(
             self,
             "*", # or do it with explicit files names in several `copy()` calls
-            src=f"{self.recipe_folder}/../../_cmake",
+            src=f"{self.recipe_folder}/../_cmake",
             # trying to "export" additional files directly into `src` folder
             # will prevent `git.clone()` from cloning the repository,
             # because `src` folder will already exist by that moment
@@ -60,6 +52,7 @@ class zlibConan(ConanFile):
         git.checkout("51b7f2abdade71cd9bb0e7a373ef2610ec6f9daf")
 
         apply_conandata_patches(self)
+
         # since one cannot export additional files directly to `src`,
         # they need to be copied over via an intermediate location
         copy(
@@ -68,6 +61,9 @@ class zlibConan(ConanFile):
             self.export_sources_folder,
             f"{self.export_sources_folder}/src"
         )
+
+        # that's how it is with zlib, one is supposed to delete
+        # the original header and use the generated header instead
         rm(self, "zconf.h", "src")
 
     def layout(self):
