@@ -1,7 +1,7 @@
 from conan import ConanFile
 from conan.tools.files import (
     apply_conandata_patches,
-    collect_libs,
+    #collect_libs,
     copy,
     export_conandata_patches,
     rm
@@ -95,4 +95,15 @@ class zlibConan(ConanFile):
         cmake.install()
 
     def package_info(self):
-        self.cpp_info.libs = collect_libs(self)
+        # is this even needed for anything?
+        #self.cpp_info.libs = collect_libs(self)
+
+        # do not let Conan try to be smarter than CMake or/and maintainer,
+        # otherwise it will generate some bizarre CMake configs of its own
+        # based on god knows what
+        self.cpp_info.set_property("cmake_find_mode", "none")
+        # this is required too, otherwise consumers won't be able to find CMake configs,
+        # and obviously if you are installing package configs to a different path,
+        # then you will need to replace `share` with whichever you are using
+        self.cpp_info.builddirs.append("share")
+
