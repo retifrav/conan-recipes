@@ -1,0 +1,4 @@
+patches:
+  "1.6.53":
+    - patch_file: "patches/1.6.53/001-single-unsuffixed-target-dependencies-installation.patch"
+      base_path: "src"
