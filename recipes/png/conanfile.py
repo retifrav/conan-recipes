@@ -42,13 +42,13 @@ class pngConan(ConanFile):
             self,
             "Installing.cmake",
             src=f"{self.recipe_folder}/../../common/cmake",
-            dst=self.export_sources_folder
+            dst=f"{self.export_sources_folder}/_additional-files",
         )
         copy(
             self,
             "Config.cmake.in",
             src=self.recipe_folder,
-            dst=self.export_sources_folder
+            dst=f"{self.export_sources_folder}/_additional-files",
         )
 
     def source(self):
@@ -66,8 +66,8 @@ class pngConan(ConanFile):
         copy(
             self,
             "*",
-            self.export_sources_folder,
-            f"{self.export_sources_folder}/src"
+            src=f"{self.export_sources_folder}/_additional-files",
+            dst=f"{self.export_sources_folder}/src"
         )
 
     def layout(self):

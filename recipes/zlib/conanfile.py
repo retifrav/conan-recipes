@@ -45,7 +45,7 @@ class zlibConan(ConanFile):
             # will prevent `git.clone()` from cloning the repository,
             # because `src` folder will already exist by that moment
             #dst=f"{self.export_sources_folder}/src"
-            dst=self.export_sources_folder
+            dst=f"{self.export_sources_folder}/_additional-files"
         )
 
     def source(self):
@@ -65,8 +65,8 @@ class zlibConan(ConanFile):
         copy(
             self,
             "*", # or do it with explicit files names in several `copy()` calls
-            self.export_sources_folder,
-            f"{self.export_sources_folder}/src"
+            src=f"{self.export_sources_folder}/_additional-files",
+            dst=f"{self.export_sources_folder}/src"
         )
 
         # that's how it is with zlib, one is supposed to delete
