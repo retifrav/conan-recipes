@@ -41,7 +41,7 @@ class pngConan(ConanFile):
         copy(
             self,
             "Installing.cmake",
-            src=f"{self.recipe_folder}/../_cmake",
+            src=f"{self.recipe_folder}/../../common/cmake",
             dst=self.export_sources_folder
         )
         copy(

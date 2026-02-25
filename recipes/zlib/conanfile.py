@@ -40,7 +40,7 @@ class zlibConan(ConanFile):
         copy(
             self,
             "*", # or do it with explicit files names in several `copy()` calls
-            src=f"{self.recipe_folder}/../_cmake",
+            src=f"{self.recipe_folder}/../../common/cmake",
             # trying to "export" additional files directly into `src` folder
             # will prevent `git.clone()` from cloning the repository,
             # because `src` folder will already exist by that moment
