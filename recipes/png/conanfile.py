@@ -15,7 +15,6 @@ class pngConan(ConanFile):
     name = "png"
     version = "1.6.53"
 
-    author = name
     url = "https://libpng.sourceforge.io/"
     description = "PNG reference library"
     license = "libpng-2.0"

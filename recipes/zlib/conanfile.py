@@ -17,7 +17,6 @@ class zlibConan(ConanFile):
     name = "zlib"
     version = "1.3.1"
 
-    author = name
     url = "https://github.com/madler/zlib"
     description = "A massively spiffy yet delicately unobtrusive compression library"
     license = "Zlib"
