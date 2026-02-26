@@ -1,3 +1,5 @@
+import pathlib
+
 from conan import ConanFile
 from conan.tools.files import (
     apply_conandata_patches,
@@ -39,15 +41,15 @@ class pngConan(ConanFile):
 
         copy(
             self,
-            "Installing.cmake",
-            src=f"{self.recipe_folder}/../../common/cmake",
-            dst=f"{self.export_sources_folder}/_additional-files",
+            "*",
+            src=pathlib.Path(self.recipe_folder) / ".." / ".." / "common" / "cmake",
+            dst=pathlib.Path(self.export_sources_folder) / "_additional-files"
         )
         copy(
             self,
             "Config.cmake.in",
             src=self.recipe_folder,
-            dst=f"{self.export_sources_folder}/_additional-files",
+            dst=pathlib.Path(self.export_sources_folder) / "_additional-files"
         )
 
     def source(self):
@@ -65,8 +67,8 @@ class pngConan(ConanFile):
         copy(
             self,
             "*",
-            src=f"{self.export_sources_folder}/_additional-files",
-            dst=f"{self.export_sources_folder}/src"
+            src=pathlib.Path(self.export_sources_folder) / "_additional-files",
+            dst=pathlib.Path(self.export_sources_folder) / "src"
         )
 
     def layout(self):

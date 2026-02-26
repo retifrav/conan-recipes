@@ -1,3 +1,5 @@
+import pathlib
+
 from conan import ConanFile
 from conan.tools.files import (
     apply_conandata_patches,
@@ -39,12 +41,12 @@ class zlibConan(ConanFile):
         copy(
             self,
             "*", # or do it with explicit files names in several `copy()` calls
-            src=f"{self.recipe_folder}/../../common/cmake",
+            src=pathlib.Path(self.recipe_folder) / ".." / ".." / "common" / "cmake",
             # trying to "export" additional files directly into `src` folder
             # will prevent `git.clone()` from cloning the repository,
             # because `src` folder will already exist by that moment
-            #dst=f"{self.export_sources_folder}/src"
-            dst=f"{self.export_sources_folder}/_additional-files"
+            #dst=pathlib.Path(self.export_sources_folder) / "src"
+            dst=pathlib.Path(self.export_sources_folder) / "_additional-files"
         )
 
     def source(self):
@@ -64,8 +66,8 @@ class zlibConan(ConanFile):
         copy(
             self,
             "*", # or do it with explicit files names in several `copy()` calls
-            src=f"{self.export_sources_folder}/_additional-files",
-            dst=f"{self.export_sources_folder}/src"
+            src=pathlib.Path(self.export_sources_folder) / "_additional-files",
+            dst=pathlib.Path(self.export_sources_folder) / "src"
         )
 
         # that's how it is with zlib, one is supposed to delete
