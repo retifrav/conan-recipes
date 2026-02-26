@@ -86,7 +86,7 @@ class pngConan(ConanFile):
 
         PNG_STATIC = 1
         PNG_SHARED = 0
-        if self.options["shared"] is True:
+        if self.options.shared:
             PNG_STATIC = 0
             PNG_SHARED = 1
 
