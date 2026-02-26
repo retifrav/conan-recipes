@@ -15,7 +15,7 @@ from conan.tools.cmake import (
     CMakeToolchain
 )
 
-class zlibConan(ConanFile):
+class pkgConan(ConanFile):
     name = "zlib"
     version = "1.3.1"
 

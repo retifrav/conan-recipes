@@ -13,7 +13,7 @@ from conan.tools.cmake import (
     CMakeToolchain
 )
 
-class pngConan(ConanFile):
+class pkgConan(ConanFile):
     name = "png"
     version = "1.6.53"
 
