@@ -33,9 +33,6 @@ class pkgConan(ConanFile):
 
     settings = "os", "compiler", "build_type", "arch"
 
-    def requirements(self):
-        self.requires("zlib/1.3.1@decovar/public")
-
     def export_sources(self):
         export_conandata_patches(self)
 
@@ -51,6 +48,12 @@ class pkgConan(ConanFile):
             src=self.recipe_folder,
             dst=pathlib.Path(self.export_sources_folder) / "_additional-files"
         )
+
+    def requirements(self):
+        self.requires("zlib/1.3.1@decovar/public")
+
+    def layout(self):
+        cmake_layout(self)
 
     def source(self):
         git = Git(self)
@@ -70,9 +73,6 @@ class pkgConan(ConanFile):
             src=pathlib.Path(self.export_sources_folder) / "_additional-files",
             dst=pathlib.Path(self.export_sources_folder) / "src"
         )
-
-    def layout(self):
-        cmake_layout(self)
 
     def generate(self):
         tc = CMakeToolchain(self, generator="Ninja")

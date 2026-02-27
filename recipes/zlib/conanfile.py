@@ -49,6 +49,9 @@ class pkgConan(ConanFile):
             dst=pathlib.Path(self.export_sources_folder) / "_additional-files"
         )
 
+    def layout(self):
+        cmake_layout(self)
+
     def source(self):
         git = Git(self)
         git.clone(
@@ -73,9 +76,6 @@ class pkgConan(ConanFile):
         # that's how it is with zlib, one is supposed to delete
         # the original header and use the generated header instead
         rm(self, "zconf.h", "src")
-
-    def layout(self):
-        cmake_layout(self)
 
     def generate(self):
         tc = CMakeToolchain(self, generator="Ninja")
@@ -107,4 +107,3 @@ class pkgConan(ConanFile):
         # and obviously if you are installing package configs to a different path,
         # then you will need to replace `share` with whichever you are using
         self.cpp_info.builddirs.append("share")
-
