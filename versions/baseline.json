@@ -6,6 +6,11 @@
             "baseline": "1.6.53",
             "recipe-version": 0
         },
+        "ryu":
+        {
+            "baseline": "2024.2.19",
+            "recipe-version": 0
+        },
         "zlib":
         {
             "baseline": "1.3.1",
