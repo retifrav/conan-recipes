@@ -11,6 +11,11 @@
             "baseline": "2024.2.19",
             "recipe-version": 0
         },
+        "ryu-wrapper":
+        {
+            "baseline": "2026.3.12",
+            "recipe-version": 0
+        },
         "zlib":
         {
             "baseline": "1.3.1",
