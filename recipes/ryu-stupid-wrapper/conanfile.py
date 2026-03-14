@@ -36,7 +36,14 @@ class pkgConan(ConanFile):
         )
 
     def requirements(self):
-        self.requires("ryu/2024.2.19@decovar/public")
+        self.requires(
+            "ryu/2024.2.19@decovar/public",
+            no_skip=(
+                self.settings.os == "Windows"
+                and
+                self.options.shared
+            )
+        )
 
     def layout(self):
         cmake_layout(self)
