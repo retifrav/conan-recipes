@@ -9,8 +9,8 @@ from conan.tools.cmake import (
 )
 
 class pkgConan(ConanFile):
-    name = "ryu-stupid-wrapper"
-    version = "2026.3.12"
+    name = "zlib-stupid-wrapper"
+    version = "2026.3.13"
 
     description = "A pointless package made merely for testing Conan peculiarities"
     license = "GPL-3.0-or-later"
@@ -36,7 +36,7 @@ class pkgConan(ConanFile):
         )
 
     def requirements(self):
-        self.requires("ryu/2024.2.19@decovar/public")
+        self.requires("zlib/1.3.1@decovar/public")
 
     def layout(self):
         cmake_layout(self)
